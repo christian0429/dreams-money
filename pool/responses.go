@@ -56,6 +56,8 @@ func handleStratumRequest(request *stratumRequest, client *stratumClient, pool *
 		return miningSubmit(request, client, pool)
 	case "mining.multi_version":
 		return nil, nil // ignored
+	case "mining.get_transactions":
+		return nil, nil // ignored
 	default:
 		return stratumResponse{}, errors.New("unknown stratum request method: " + request.Method)
 	}
