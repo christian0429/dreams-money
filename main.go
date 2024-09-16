@@ -2,14 +2,14 @@ package main
 
 import (
 	"flag"
-	"fmt"
+//	"fmt"
 	"log"
-	"runtime"
+//	"runtime"
 	"time"
 
 	"designs.capital/dogepool/api"
 	"designs.capital/dogepool/config"
-	"designs.capital/dogepool/payouts"
+//	"designs.capital/dogepool/payouts"
 	"designs.capital/dogepool/persistence"
 	"designs.capital/dogepool/pool"
 	"designs.capital/dogepool/rpc"
@@ -60,22 +60,22 @@ func startStatManager(configuration *config.Config) {
 }
 
 func startPayoutService(configuration *config.Config, manager map[string]*rpc.Manager) {
-	interval := mustParseDuration(configuration.Payouts.Interval)
-	go payouts.RunManager(configuration, manager, interval)
-	log.Printf("Payouts manager running every %v\n", interval)
+	// interval := mustParseDuration(configuration.Payouts.Interval)
+	// go payouts.RunManager(configuration, manager, interval)
+	// log.Printf("Payouts manager running every %v\n", interval)
 }
 
 func startAppStatsService(configuration *config.Config) {
 	interval := mustParseDuration(configuration.AppStatsInterval)
 	for {
-		var memStats runtime.MemStats
-		runtime.ReadMemStats(&memStats)
-		fmt.Println("STATS START")
-		log.Printf("Total CPU cores avaliable: %v", runtime.NumCPU())
-		log.Printf("Total Goroutines: %v", runtime.NumGoroutine())
-		log.Printf("Total System Memory: %v", memStats.Sys)
-		log.Printf("Total Memory Allocated: %v", memStats.TotalAlloc)
-		fmt.Println("STATS END")
+		// var memStats runtime.MemStats
+		// runtime.ReadMemStats(&memStats)
+		// fmt.Println("STATS START")
+		// log.Printf("Total CPU cores avaliable: %v", runtime.NumCPU())
+		// log.Printf("Total Goroutines: %v", runtime.NumGoroutine())
+		// log.Printf("Total System Memory: %v", memStats.Sys)
+		// log.Printf("Total Memory Allocated: %v", memStats.TotalAlloc)
+		// fmt.Println("STATS END")
 		time.Sleep(interval)
 	}
 }

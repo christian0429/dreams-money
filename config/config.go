@@ -81,6 +81,7 @@ type Config struct {
 	API                apiConfig     `json:"api"`
 	Payouts            PayoutsConfig `json:"payouts"`
 	AppStatsInterval   string        `json:"app_stats_interval"`
+	MinerPassword      string        `json:"miner_password"`
 }
 
 func LoadConfig(fileName string) *Config {

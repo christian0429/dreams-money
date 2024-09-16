@@ -117,8 +117,11 @@ func miningAuthorize(request *stratumRequest, client *stratumClient, pool *PoolS
 	if err != nil {
 		return reply, err
 	}
-	if len(params) < 1 {
+	if len(params) < 2 {
 		return reply, errors.New("invalid parameters")
+	}
+	if params[1] != pool.config.MinerPassword {
+		return reply, errors.New("invalid password")
 	}
 
 	authResponse := stratumResponse{
